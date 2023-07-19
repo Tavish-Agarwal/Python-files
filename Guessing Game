@@ -1,0 +1,92 @@
+secret_word = "glass"
+key = 0
+num = 0
+
+
+def guess_no_of_letters():
+    letters = int(input("Guess the number of letters in word: "))
+    while letters != len(secret_word):
+        if letters > len(secret_word):
+            print("The word contains less letters")
+        else:
+            print("The word contains more letters")
+        letters = int(input("Guess the number of letters again: "))
+    print("That's correct!")
+
+
+def guess_letters():
+    let = input("Guess a letter from the word: ")
+    if let in secret_word:
+        print("That is correct.")
+    else:
+        print("No, that letter does not exist in the word.")
+
+
+def hint(no):
+    print("The " + str(no+1) + "th letter of the word is:- " + secret_word[no])
+    no += 1
+    return no
+
+
+def vowels():
+    index = 0
+    count = 0
+    vowels = ["a", "e", "i", "o", "u"]
+    while index < len(secret_word):
+        if secret_word[index] in vowels:
+            count += 1
+        index += 1
+    print("The secret word has " + str(count) + " vowels")
+
+
+def guess():
+    word = input("Guess the word: ")
+    if word == secret_word:
+        print("Congratulations, You have guessed the word correctly!!")
+        return 1
+    else:
+        print("Oh no, that's incorrect. Better luck next time!")
+        return 0
+
+
+while key != 1:
+    if num < len(secret_word):
+        print("\nTo guess the word, Enter G")
+        print("To know the no of vowels in the word, Enter V")
+        print("To guess no of letters in the word, Enter L")
+        print("To guess a specific letter from the word, Enter S")
+        print("To get a hint, Enter H")
+        response = input("Enter the option you decide to choose: ")
+        if response == "G":
+            ans = guess()
+            if ans == 1:
+                key = 1
+        elif response == "V":
+            vowels()
+        elif response == "L":
+            guess_no_of_letters()
+        elif response == "S":
+            guess_letters()
+        elif response == "H":
+            num = hint(num)
+        else:
+            response = input("Invalid response, re-enter your response: ")
+    else:
+        print("\nTo guess the word, Enter G")
+        print("To know the no of vowels in the word, Enter V")
+        print("To guess no of letters in the word, Enter L")
+        print("To guess a specific letter from the word, Enter S")
+        response = input("Enter the option you decide to choose: ")
+        if response == "G":
+            ans = guess()
+            if ans == 1:
+                key = 1
+        elif response == "V":
+            vowels()
+        elif response == "L":
+            guess_no_of_letters()
+        elif response == "S":
+            guess_letters()
+        else:
+            response = input("Invalid response, re-enter your response: ")
+

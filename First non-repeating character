@@ -1,0 +1,14 @@
+class Solution:
+
+    # Function to find the first non-repeating character in a string.
+    def non_repeating_Character(self, s):
+        # code here
+        for i in s:
+            if s.count(i) == 1:
+                return i
+        return "$"
+
+
+ans = Solution()
+word = ans.non_repeating_Character("zxvbczbtxcyzvy")
+print(word)

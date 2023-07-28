@@ -1,0 +1,45 @@
+#User function Template for python3
+
+class Solution:
+    ##Complete this function
+    #Function to find the sum of contiguous subarray with maximum sum.
+    def maxSubArraySum(self,arr,N):
+        ##Your code here
+        max_1 = []
+        for i in range(N):
+            max_1.append(arr[i])
+            temp = max_1[i]
+            for k in range(i+1,N):
+                temp += arr[k]
+                if temp in range(max_1[i]+1, 9999999):
+                    max_1[i] = temp
+                    k +=1
+            i += 1
+        return max(max_1)
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+import math
+
+ 
+def main():
+        T=int(input())
+        while(T>0):
+            
+            n=int(input())
+            
+            arr=[int(x) for x in input().strip().split()]
+            
+            ob=Solution()
+            
+            print(ob.maxSubArraySum(arr,n))
+            
+            T-=1
+
+
+if __name__ == "__main__":
+    main()
+# } Driver Code Ends
